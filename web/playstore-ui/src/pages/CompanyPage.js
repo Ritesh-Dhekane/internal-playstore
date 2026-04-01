@@ -11,14 +11,41 @@ function CompanyPage() {
 
   useEffect(() => {
     const load = async () => {
-      const configs = await fetchCompanyConfig();
-      const companyConfig = configs[company];
+      try {
+        console.log("Loading company:", company);
 
-      setConfig(companyConfig);
+        const configs = await fetchCompanyConfig();
+        const companyConfig = configs?.[company];
 
-      const appsData = await fetchApps(company);
-      appsData.sort((a, b) => new Date(b.date) - new Date(a.date));
-      setApps(appsData);
+        if (!companyConfig) {
+          console.error("Company config not found:", company);
+          setConfig(null);
+          return;
+        }
+
+        setConfig(companyConfig);
+
+        const appsData = await fetchApps(company);
+
+        console.log("📦 Raw apps data:", appsData);
+
+        // SAFETY CHECK
+        if (!Array.isArray(appsData)) {
+          console.error("appsData is not an array:", appsData);
+          setApps([]);
+          return;
+        }
+
+        // SORT SAFE
+        const sortedApps = [...appsData].sort(
+          (a, b) => new Date(b.date) - new Date(a.date),
+        );
+
+        setApps(sortedApps);
+      } catch (err) {
+        console.error("Error loading apps:", err);
+        setApps([]);
+      }
     };
     console.log("Company param:", company);
     load();
@@ -28,11 +55,13 @@ function CompanyPage() {
 
   return (
     <div style={{ padding: 40 }}>
-      <h1>{config.name} Internal Store</h1>
+      <h1>{config.name} Internal App Store</h1>
 
-      {apps.map((app, index) => (
-        <AppCard key={index} app={app} />
-      ))}
+      {Array.isArray(apps) && apps.length > 0 ? (
+        apps.map((app, index) => <AppCard key={index} app={app} />)
+      ) : (
+        <p>No apps available</p>
+      )}
     </div>
   );
 }
