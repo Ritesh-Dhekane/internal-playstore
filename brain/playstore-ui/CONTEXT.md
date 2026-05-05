@@ -11,6 +11,8 @@
 - Global styles use:
   - `colors.js`
   - `globalStyles.js`
+- `AppCard.js` renders app name, version badge, release date, optional icon, optional size, download button, Android install button, and QR code.
+- `CompanyPage.js` renders app cards in a responsive grid.
 
 ## Access Control
 - Supports password-protected apps.
@@ -18,4 +20,3 @@
 - Access behavior is company-based.
 
 ## Unknown
-

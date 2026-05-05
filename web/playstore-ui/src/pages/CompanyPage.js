@@ -26,6 +26,12 @@ function CompanyPage() {
           return;
         }
 
+        console.log("[CompanyPage] Company config loaded:", {
+          company,
+          name: companyConfig.name,
+          public: companyConfig.public,
+        });
+
         setConfig(companyConfig);
 
         // AUTH CHECK
@@ -52,10 +58,20 @@ function CompanyPage() {
           return;
         }
 
+        console.log("[CompanyPage] Apps loaded:", {
+          company,
+          count: appsData.length,
+        });
+
         // SORT SAFE (latest first)
         const sortedApps = [...appsData].sort(
           (a, b) => new Date(b.date) - new Date(a.date),
         );
+
+        console.log("[CompanyPage] Apps sorted latest first:", {
+          company,
+          latestApp: sortedApps[0]?.name || null,
+        });
 
         setApps(sortedApps);
       } catch (err) {
@@ -90,7 +106,18 @@ function CompanyPage() {
       <h1>{config.name} Internal App Store</h1>
 
       {Array.isArray(apps) && apps.length > 0 ? (
-        apps.map((app, index) => <AppCard key={index} app={app} />)
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: 20,
+            alignItems: "start",
+          }}
+        >
+          {apps.map((app, index) => (
+            <AppCard key={index} app={app} isLatest={index === 0} />
+          ))}
+        </div>
       ) : (
         <p>No apps available</p>
       )}

@@ -1,8 +1,16 @@
 [
   {
     "name": "Demo App",
+    "version": "1.1.0",
+    "date": "2026-05-01",
+    "size": "18 MB",
+    "apk": "/apks/demo/demo-latest.apk"
+  },
+  {
+    "name": "Demo App Legacy",
     "version": "1.0.0",
     "date": "2026-04-01",
+    "size": "16 MB",
     "apk": "/apks/demo/demo.apk"
   }
 ]
