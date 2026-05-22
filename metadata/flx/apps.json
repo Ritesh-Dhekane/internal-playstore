@@ -1,0 +1,16 @@
+[
+  {
+    "name": "FLX Field",
+    "version": "3.2.0",
+    "date": "2026-05-02",
+    "size": "21 MB",
+    "apk": "/apks/flx/flx-field.apk"
+  },
+  {
+    "name": "FLX Admin",
+    "version": "3.1.0",
+    "date": "2026-04-18",
+    "size": "19 MB",
+    "apk": "/apks/flx/flx-admin.apk"
+  }
+]
