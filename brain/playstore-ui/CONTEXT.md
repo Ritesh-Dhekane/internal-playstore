@@ -8,6 +8,9 @@
 - Metadata-driven UI.
 - Per-company config uses `metadata/company-config.json`.
 - App metadata uses `apps.json` per company.
+- GitHub Pages deployment uses CRA `homepage: "."`.
+- GitHub Actions deploys the app to GitHub Pages from `web/playstore-ui/build`.
+- Routing uses hash URLs for GitHub Pages compatibility.
 - Global styles use:
   - `colors.js`
   - `globalStyles.js`

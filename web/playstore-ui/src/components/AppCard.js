@@ -29,10 +29,18 @@ const globalStyles = {
   },
 };
 
+const publicUrl = process.env.PUBLIC_URL || "";
+
+const resolvePublicAsset = (path) => {
+  if (!path) return "";
+  if (/^(https?:)?\/\//.test(path) || path.startsWith("data:")) return path;
+  return `${publicUrl}${path.startsWith("/") ? path : `/${path}`}`;
+};
+
 function AppCard({ app, isLatest = false }) {
 
   const isAndroid = /Android/i.test(navigator.userAgent);
-  const apkUrl = app.apk;
+  const apkUrl = resolvePublicAsset(app.apk);
   const installButtonStyle = {
     ...globalStyles.button,
     background: colors.success,
@@ -59,7 +67,7 @@ function AppCard({ app, isLatest = false }) {
       <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
         {app.icon ? (
           <img
-            src={app.icon}
+            src={resolvePublicAsset(app.icon)}
             alt={`${app.name} icon`}
             style={{
               width: 56,
