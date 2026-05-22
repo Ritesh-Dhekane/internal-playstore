@@ -11,6 +11,8 @@
 - GitHub Pages deployment uses CRA `homepage: "."`.
 - GitHub Actions deploys the app to GitHub Pages from `web/playstore-ui/build`.
 - Routing uses hash URLs for GitHub Pages compatibility.
+- Layout is mobile-first: responsive page padding, single-column mobile grid, and multi-column wider screens.
+- QR and action areas are sized to avoid mobile overflow.
 - Global styles use:
   - `colors.js`
   - `globalStyles.js`

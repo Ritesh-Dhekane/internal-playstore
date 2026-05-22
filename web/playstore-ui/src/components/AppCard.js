@@ -58,13 +58,14 @@ function AppCard({ app, isLatest = false }) {
       background: colors.surface,
       border: `1px solid ${colors.border}`,
       borderRadius: 12,
-      padding: 22,
-      marginTop: 20,
+      padding: "clamp(18px, 4vw, 24px)",
       boxShadow: "0 4px 14px rgba(0,0,0,0.08)",
       color: colors.text,
+      boxSizing: "border-box",
+      height: "100%",
     }}>
 
-      <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+      <div style={{ display: "flex", gap: 16, alignItems: "flex-start", flexWrap: "wrap" }}>
         {app.icon ? (
           <img
             src={resolvePublicAsset(app.icon)}
@@ -138,13 +139,15 @@ function AppCard({ app, isLatest = false }) {
         </div>
       </div>
 
-      <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 18 }}>
+      <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 20 }}>
         <button
           onClick={() => window.location.href = apkUrl}
           style={{
             ...globalStyles.button,
             background: colors.primary,
             color: "white",
+            flex: "1 1 150px",
+            minHeight: 44,
           }}
         >
           Download APK
@@ -154,7 +157,11 @@ function AppCard({ app, isLatest = false }) {
         {isAndroid && (
           <button
             onClick={() => window.location.href = apkUrl}
-            style={installButtonStyle}
+            style={{
+              ...installButtonStyle,
+              flex: "1 1 150px",
+              minHeight: 44,
+            }}
           >
             Install App
           </button>
