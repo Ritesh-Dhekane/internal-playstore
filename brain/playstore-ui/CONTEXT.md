@@ -14,6 +14,7 @@
 - Layout is mobile-first: responsive page padding, single-column mobile grid, and multi-column wider screens.
 - QR and action areas are sized to avoid mobile overflow.
 - Shared responsive styling helpers live in `src/styles/colors.js` and `src/styles/globalStyles.js`.
+- `AppCard.js` supports optional `app.icon` and `app.size`, with fallback icon and reusable latest/version badge styles.
 - Global styles use:
   - `colors.js`
   - `globalStyles.js`

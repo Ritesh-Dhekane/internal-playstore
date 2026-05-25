@@ -6,7 +6,7 @@ function QRInstall({ apkUrl }) {
 
   return (
     <div style={globalStyles.qrContainer}>
-      <p style={{ margin: "0 0 12px" }}><b>Scan to install</b></p>
+      <p style={globalStyles.qrLabel}>Scan to install</p>
 
       <QRCodeCanvas
         value={installUrl}
