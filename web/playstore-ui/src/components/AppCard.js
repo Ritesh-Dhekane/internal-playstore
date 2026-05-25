@@ -1,33 +1,6 @@
 import QRInstall from "./QRInstall";
-
-const colors = {
-  border: "#e0e0e0",
-  text: "#202124",
-  muted: "#5f6368",
-  surface: "#ffffff",
-  softSurface: "#f8fafd",
-  primary: "#1a73e8",
-  success: "#2e7d32",
-};
-
-const globalStyles = {
-  badge: {
-    display: "inline-flex",
-    alignItems: "center",
-    borderRadius: 999,
-    fontSize: 12,
-    fontWeight: 700,
-    lineHeight: 1,
-    padding: "6px 10px",
-  },
-  button: {
-    border: "none",
-    borderRadius: 6,
-    cursor: "pointer",
-    fontWeight: 700,
-    padding: "10px 16px",
-  },
-};
+import colors from "../styles/colors";
+import globalStyles from "../styles/globalStyles";
 
 const publicUrl = process.env.PUBLIC_URL || "";
 
@@ -54,16 +27,7 @@ function AppCard({ app, isLatest = false }) {
   };
 
   return (
-    <div style={{
-      background: colors.surface,
-      border: `1px solid ${colors.border}`,
-      borderRadius: 12,
-      padding: "clamp(18px, 4vw, 24px)",
-      boxShadow: "0 4px 14px rgba(0,0,0,0.08)",
-      color: colors.text,
-      boxSizing: "border-box",
-      height: "100%",
-    }}>
+    <div style={globalStyles.card}>
 
       <div style={{ display: "flex", gap: 16, alignItems: "flex-start", flexWrap: "wrap" }}>
         {app.icon ? (
@@ -76,7 +40,7 @@ function AppCard({ app, isLatest = false }) {
               borderRadius: 14,
               objectFit: "cover",
               border: `1px solid ${colors.border}`,
-              background: colors.softSurface,
+              background: colors.surfaceSoft,
               flexShrink: 0,
             }}
           />
@@ -87,7 +51,7 @@ function AppCard({ app, isLatest = false }) {
               width: 56,
               height: 56,
               borderRadius: 14,
-              background: colors.softSurface,
+              background: colors.surfaceSoft,
               border: `1px solid ${colors.border}`,
               display: "flex",
               alignItems: "center",
@@ -109,7 +73,7 @@ function AppCard({ app, isLatest = false }) {
             {isLatest && (
               <span style={{
                 ...globalStyles.badge,
-                background: "#e6f4ea",
+                background: colors.successSoft,
                 color: colors.success,
               }}>
                 Latest
@@ -120,18 +84,18 @@ function AppCard({ app, isLatest = false }) {
           <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap", marginTop: 12 }}>
             <span style={{
               ...globalStyles.badge,
-              background: "#e8f0fe",
+              background: colors.primarySoft,
               color: colors.primary,
             }}>
               Version {app.version}
             </span>
 
-            <span style={{ color: colors.muted, fontSize: 14 }}>
+            <span style={globalStyles.metadataText}>
               Released: {app.date}
             </span>
 
             {app.size && (
-              <span style={{ color: colors.muted, fontSize: 14 }}>
+              <span style={globalStyles.metadataText}>
                 Size: {app.size}
               </span>
             )}
@@ -139,15 +103,14 @@ function AppCard({ app, isLatest = false }) {
         </div>
       </div>
 
-      <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 20 }}>
+      <div style={globalStyles.buttonGroup}>
         <button
           onClick={() => window.location.href = apkUrl}
           style={{
             ...globalStyles.button,
+            ...globalStyles.responsiveButton,
             background: colors.primary,
             color: "white",
-            flex: "1 1 150px",
-            minHeight: 44,
           }}
         >
           Download APK
@@ -159,8 +122,7 @@ function AppCard({ app, isLatest = false }) {
             onClick={() => window.location.href = apkUrl}
             style={{
               ...installButtonStyle,
-              flex: "1 1 150px",
-              minHeight: 44,
+              ...globalStyles.responsiveButton,
             }}
           >
             Install App

@@ -13,6 +13,7 @@
 - Routing uses hash URLs for GitHub Pages compatibility.
 - Layout is mobile-first: responsive page padding, single-column mobile grid, and multi-column wider screens.
 - QR and action areas are sized to avoid mobile overflow.
+- Shared responsive styling helpers live in `src/styles/colors.js` and `src/styles/globalStyles.js`.
 - Global styles use:
   - `colors.js`
   - `globalStyles.js`
