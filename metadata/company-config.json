@@ -1,0 +1,5 @@
+{
+  "mtg": { "name": "MedTransGo", "public": false, "password": "mtg123" },
+  "flx": { "name": "Flex Corp", "public": false, "password": "flx123" },
+  "demo": { "name": "Demo Public", "public": true }
+}

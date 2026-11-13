@@ -1,0 +1,16 @@
+[
+  {
+    "name": "MTG Driver",
+    "version": "2.4.0",
+    "date": "2026-05-03",
+    "size": "24 MB",
+    "apk": "/apks/mtg/mtg-driver.apk"
+  },
+  {
+    "name": "MTG Ops",
+    "version": "2.3.1",
+    "date": "2026-04-22",
+    "size": "22 MB",
+    "apk": "/apks/mtg/mtg-ops.apk"
+  }
+]
